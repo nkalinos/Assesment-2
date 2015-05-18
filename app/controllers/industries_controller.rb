@@ -17,6 +17,7 @@ class IndustriesController < ApplicationController
   def create
     @industry = Industry.new(industry_params)
     if @industry.save
+      flash[:success] = "Industry Successfuly Created! "
       redirect_to industry_path(@industry)
     else
       render :new
@@ -24,14 +25,26 @@ class IndustriesController < ApplicationController
   end
 
   def edit
-
+    @industry = Industry.find(params[:id])
   end
 
   def update
+    @industry = Industry.find(params[:id])
+    if @industry.update(industry_params)
+      flash[:success] = "Industry Successfuly Updated! "
 
+      redirect_to industries_path
+    else
+      render :edit
+    end
   end
 
-  def delete
+  def destroy
+    @industry = Industry.find(params[:id])
+    @industry.destroy
+    flash[:success] = "Industry Successfuly Deleted! "
+
+    redirect_to industries_path
 
   end
 
