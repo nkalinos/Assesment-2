@@ -1,0 +1,33 @@
+<h1> <%= link_to @company.company_name, companies_path  %> </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Created At</th>
+      <th>Updated At</th>
+
+      <%= link_to "Edit", edit_company_path %>
+
+      <%= link_to 'Delete', company_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td> <%= @company.company_name %> </td>
+        <td> <%= @company.description %>
+        <td> <%= @company.created_at %> </td>
+        <td> <%= @company.updated_at %> </td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+</table>
