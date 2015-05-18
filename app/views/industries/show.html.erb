@@ -23,10 +23,19 @@
       </tr>
   </tbody>
 </table>
+<h1>Companies</h1>
 <table>
   <thead>
     <tr>
-      <th></th>
+      <th>Company Name</th>
     </tr>
   </thead>
+  <tbody>
+    <tr>
+      <%= form_for [@company, @industry], html: {class:"form-horizontal"} do |f| %>
+
+      <td> <%= collection_select( :company, :company_id, Company.all, :id, :company_name, {}, ) %>  <%= f.submit "Add Company" %>  </td>
+      <% end %>
+    </tr>
+  </tbody>
 </table>

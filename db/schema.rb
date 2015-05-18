@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518200458) do
+ActiveRecord::Schema.define(version: 20150518213718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 20150518200458) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "industries_companies_joins", id: false, force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "industry_id"
+  end
+
+  add_index "industries_companies_joins", ["company_id"], name: "index_industries_companies_joins_on_company_id", using: :btree
+  add_index "industries_companies_joins", ["industry_id"], name: "index_industries_companies_joins_on_industry_id", using: :btree
 
   add_foreign_key "companies", "industries"
 end

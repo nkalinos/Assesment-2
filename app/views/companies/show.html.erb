@@ -19,15 +19,25 @@
       <tr>
         <td> <%= @company.company_name %> </td>
         <td> <%= @company.description %>
+        <td> <%= @company.price %> </td>
         <td> <%= @company.created_at %> </td>
         <td> <%= @company.updated_at %> </td>
       </tr>
   </tbody>
 </table>
+
+<h1>Industries</h1>
 <table>
   <thead>
     <tr>
-      <th></th>
+      <th>Select Associated Industries</th>
     </tr>
   </thead>
+  <tbody>
+    <%= form_for [@industry, @company], html: {class:"form-horizontal"} do |f| %>
+    <tr>
+      <td> <%= collection_select( :industry, :industry_id, Industry.all, :id, :name, {}, ) %> <%= f.submit "Add Industry"  %> </td>
+    <% end %>
+    </tr>
+  </tbody>
 </table>

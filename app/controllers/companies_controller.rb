@@ -10,14 +10,13 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
     @companies = Company.all
-
   end
 
   def create
-    @company = Company.new(industry_params)
+    @company = Company.new(company_params)
     if @company.save
       flash[:success] = "Company Successfuly Created! "
-      redirect_to industry_path(@company)
+      redirect_to company_path(@company)
     else
       render :new
     end
@@ -29,7 +28,7 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find(params[:id])
-    if @company.update(industry_params)
+    if @company.update(company_params)
       flash[:success] = "Company Successfuly Updated! "
 
       redirect_to companies_path
@@ -43,12 +42,12 @@ class CompaniesController < ApplicationController
     @company.destroy
     flash[:success] = "Company Successfuly Deleted! "
 
-    redirect_to industries_path
+    redirect_to companies_path
 
   end
 
   private
-  def industry_params
+  def company_params
     params.require(:company).permit(:company_name, :description, :price)
   end
 

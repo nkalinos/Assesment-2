@@ -11,7 +11,6 @@ class IndustriesController < ApplicationController
   def show
     @industry = Industry.find(params[:id])
     @industries = Industry.all
-
   end
 
   def create
@@ -41,6 +40,7 @@ class IndustriesController < ApplicationController
 
   def destroy
     @industry = Industry.find(params[:id])
+    @company = Company.find(params[:company_id])
     @industry.destroy
     flash[:success] = "Industry Successfuly Deleted! "
 
